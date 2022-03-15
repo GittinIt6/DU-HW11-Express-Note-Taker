@@ -19,20 +19,34 @@ notes.post('/', (req, res) => {
 
     console.log(getUUID());
 
-    async const readAndAppend = (content, file) => {
+    const readAndAppend = (content, file) => {
         fs.readFile(file, 'utf8', (err, data) => {
           if (err) {
             console.error(err);
           } else {
-            //left of here, not working.
             // const uniqueID = getUUID();
             const parsedData = JSON.parse(data);
+            console.log(`content is: ${JSON.stringify(content)}`);
             parsedData.push(content);
             writeToFile(file, parsedData);
           }
         });
+    };
 
+    const writeToFile = (destination, content) =>
+        fs.writeFile(destination, JSON.stringify(content), (err) =>
+        err ? console.error(err) : console.log(`\nData written to ${destination}`)
+    );
+
+    const { title, text } = req.body;
+    const idContent = {
+        'id': getUUID(),
+        'title': title,
+        'text': text,   
+    };
+    console.log(`idcontent is: ${JSON.stringify(idContent)}`);
+    readAndAppend (idContent, './db/db.json');
+    res.json({status:'success'});
 });
-
 
 module.exports = notes;

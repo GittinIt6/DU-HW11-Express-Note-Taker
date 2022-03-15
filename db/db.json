@@ -1,7 +1,1 @@
-[
-    {
-        "uuid":"1",
-        "title":"Test Title",
-        "text":"Test text"
-    }
-]
+[{"id":"1","title":"Test Title","text":"Test text"},{"id":"0660","title":"TEst number 14","text":"lucky number 14 with unique ID."},{"id":"a7f1","title":"New Note","text":"new note text."}]
