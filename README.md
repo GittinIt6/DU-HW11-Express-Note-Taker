@@ -77,7 +77,7 @@ Root Directory/
 
 >**path**: This site uses the node.js built in path module <https://nodejs.dev/learn/the-nodejs-path-module>
 
-### Data Flow Diagram:
+### Screenshots:
 
 ![screenshot](./git-files/screenshot1.PNG)
 ![screenshot](./git-files/screenshot2.PNG)
