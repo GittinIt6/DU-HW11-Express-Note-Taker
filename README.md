@@ -13,6 +13,16 @@ Github Repository Address: <https://github.com/GittinIt6/DU-HW11-Express-Note-Ta
 
 This application is specific to anyone that wants to generate a list of tasks with descriptions.
 
+## Audience
+
+The intended audience is an individual that wants to generate a list of tasks with descriptions.
+
+&#x2612; **USER** Technical Knowledge:
+The user of this site does **_not_** need to have a technical background.
+
+&#x2611; **Developer** Technical Knowledge:
+A developer editing this code does need to have a technical background, and requires an understanding of node.js.
+
 ## Instructions for developers
 1. Ensure you have downloaded and installed node.js and express and have rebooted your system (if Windows)
 2. Clone repository to your system.
@@ -24,15 +34,14 @@ npm start
 ~~~
 5. Tasks are saved in a JSON file (acting as a database) in the **./db** directory
 
-## Audience
-
-The intended audience is an individual that wants to generate a list of tasks with descriptions.
-
-&#x2612; **USER** Technical Knowledge:
-The user of this site does **_not_** need to have a technical background.
-
-&#x2611; **Developer** Technical Knowledge:
-A developer editing this code does need to have a technical background, and requires an understanding of node.js.
+## API
+| Path       | Method | Action                | Requires   |
+|------------|--------|-----------------------|------------|
+| *          | GET    | return index.html     |            |
+| /notes     | GET    | return notes.html     |            |
+| /api/notes | GET    | return db.json        |            |
+| /api/notes | POST   | adds content db.json  | title,text |
+| /api/notes | DELETE | deletes specific item | :id        |
 
 ## Technical Detail
 
