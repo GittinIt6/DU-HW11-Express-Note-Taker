@@ -14,8 +14,6 @@ notes.post('/', (req, res) => {
         return num;
     };
 
-    console.log(getUUID());
-
     const readAndAppend = (content, file) => {
         fs.readFile(file, 'utf8', (err, data) => {
           if (err) {
