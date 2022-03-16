@@ -3,10 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 notes.get('/', (req, res) => {
-    // readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
-    // res.json('../db/db.json');
-    res.sendFile(path.join(__dirname, '../db/db.json'));
-
+  res.sendFile(path.join(__dirname, '../db/db.json'));
 });
 
 notes.post('/', (req, res) => {
@@ -24,9 +21,8 @@ notes.post('/', (req, res) => {
           if (err) {
             console.error(err);
           } else {
-            // const uniqueID = getUUID();
             const parsedData = JSON.parse(data);
-            console.log(`content is: ${JSON.stringify(content)}`);
+            // console.log(`content is: ${JSON.stringify(content)}`);
             parsedData.push(content);
             writeToFile(file, parsedData);
           }
@@ -44,9 +40,31 @@ notes.post('/', (req, res) => {
         'title': title,
         'text': text,   
     };
-    console.log(`idcontent is: ${JSON.stringify(idContent)}`);
+    // console.log(`idcontent is: ${JSON.stringify(idContent)}`);
     readAndAppend (idContent, './db/db.json');
     res.json({status:'success'});
+});
+
+notes.delete('/:id', (req, res) => {
+  const itemID = req.params.id;
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+    const parsedData = JSON.parse(data);
+    // .then((data) => JSON.parse(data))
+    // .then((json) => {
+      // Make a new array of all tips except the one with the ID provided in the URL
+    const result = parsedData.filter((title) => title.id !== itemID);
+    // console.log(`result is ${JSON.stringify(result)}`);
+    
+    fs.writeFile('./db/db.json', JSON.stringify(result), (err) =>
+      err ? console.error(err) : console.log(`\nData written to ./db/db.json`)
+    )
+    };
+  });
+
+  res.json ({'message': `ID ${itemID} removed from db.json.`});
 });
 
 module.exports = notes;
