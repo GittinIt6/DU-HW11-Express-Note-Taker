@@ -52,9 +52,7 @@ notes.delete('/:id', (req, res) => {
       console.error(err);
     } else {
     const parsedData = JSON.parse(data);
-    // .then((data) => JSON.parse(data))
-    // .then((json) => {
-      // Make a new array of all tips except the one with the ID provided in the URL
+    // Make a new array of all items except the one with the ID provided in the URL
     const result = parsedData.filter((title) => title.id !== itemID);
     // console.log(`result is ${JSON.stringify(result)}`);
     
